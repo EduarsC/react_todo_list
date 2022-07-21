@@ -15,7 +15,10 @@ function App() {
   function createNewTask(taskName) {
     /* for add a new element to the tasks, we need to, based in React recomendations,
       copy the actual array and then add the new element*/
-    setTaskItems([...taskItems, {name: taskName, done: false}])
+    if (!taskItems.find(task => task.name === taskName)){
+      setTaskItems([...taskItems, {name: taskName, done: false}])  
+    }
+    
   }
 
   return (
