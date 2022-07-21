@@ -1,4 +1,4 @@
-export const TaskRow = ({task}) => {
+export const TaskRow = ({task, toggleTask}) => {
     return (
         <tr key={'tr' + task.name}>
             <td
@@ -13,7 +13,8 @@ export const TaskRow = ({task}) => {
                 <div>
                     <input
                         type="checkbox"
-                        value={task.done}
+                        checked={task.done}
+                        onChange={() => toggleTask(task)}
                     ></input>
                 </div>
 
