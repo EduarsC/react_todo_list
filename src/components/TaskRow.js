@@ -1,12 +1,9 @@
 export const TaskRow = ({task, toggleTask}) => {
     return (
         <tr key={'tr' + task.name}>
-            <td
-                style={{
-                    textAlign: "left",
-                    display: "flex",
-                    justifyContent: "space-between"
-                }}>
+            <td key={task.name}
+                className="d-flex justify-content-between"    
+            >
                 <div>
                     {task.name}
                 </div>

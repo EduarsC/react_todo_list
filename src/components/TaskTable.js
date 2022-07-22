@@ -13,10 +13,10 @@ export const TaskTable = ({ tasks, toggleTask, showCompleted=false, name }) => {
     }
 
     return (
-        <table border={1} width="256px" style={{ margin: "auto", marginTop: "20px" }}>
+        <table className="table table-dark table-striped table-bordered border-secondary">
             <thead>
                 <tr>
-                    <th style={{ textAlign: "center" }}>
+                    <th className="table-primary" style={{ textAlign: "center" }} key={taskTableRow.name}>
                         {name}
                     </th>
                 </tr>
