@@ -7,7 +7,9 @@ import { TaskTable } from './components/TaskTable';
 
 function App() {
 
-  const [taskItems, setTaskItems] = useState([]);
+  const [taskItems, setTaskItems] = useState([])
+  const [showCompleted, setShowCompleted] = useState(false)
+
 
   // this function will be used by TaskTable->TaskRow
   const toggleTask = task => {
@@ -45,7 +47,6 @@ function App() {
     localStorage.setItem('tasks', JSON.stringify(taskItems))
   }, [taskItems])
 
-
   return (
     <div className="App">
       <TaskCreator createNewTask={createNewTask} />
@@ -57,12 +58,27 @@ function App() {
         {/* we pass the createNewTask function to TaskCreator, 
             in general we can pass it everything.
             With this, we can pass it information to the component */}
-        
-        <TaskTable name={"PROJECT"} tasks={taskItems} toggleTask={toggleTask} showCompleted={false} />
-        <TaskTable name={"TO DO"} tasks={taskItems} toggleTask={toggleTask} showCompleted={true}/>
-        <TaskTable name={"IN PROCESS"} tasks={taskItems} toggleTask={toggleTask} showCompleted={true}/>
-        <TaskTable name={"TO CHECK"} tasks={taskItems} toggleTask={toggleTask} showCompleted={true}/>
-        <TaskTable name={"DONE"} tasks={taskItems} toggleTask={toggleTask} showCompleted={true}/>
+
+        <div>
+          <div>
+            <input type="checkbox" onChange={(e) => setShowCompleted(!showCompleted)} />
+            <label>Show Projects Done</label>
+          </div>
+          <TaskTable name={"PROJECT"} tasks={taskItems} toggleTask={toggleTask} />
+        </div>
+        <div>
+          <div style={{visibility:"hidden"}}>
+            <input type="checkbox" onChange={(e) => setShowCompleted(!showCompleted)} />
+            <label>Show Projects Done</label>
+          </div>
+          {
+            showCompleted && (
+              <TaskTable name={"DONE"} tasks={taskItems} toggleTask={toggleTask} showCompleted={showCompleted} />
+            )
+          }
+        </div>
+
+
       </div>
 
     </div>

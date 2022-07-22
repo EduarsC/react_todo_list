@@ -1,6 +1,6 @@
 import { TaskRow } from "./TaskRow"
 
-export const TaskTable = ({ tasks, toggleTask, showCompleted, name }) => {
+export const TaskTable = ({ tasks, toggleTask, showCompleted=false, name }) => {
 
     const taskTableRow = (doneValue) => {
         return (

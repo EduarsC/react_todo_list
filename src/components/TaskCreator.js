@@ -14,11 +14,11 @@ export const TaskCreator = ({createNewTask}) => {
         <form onSubmit={handleSubmit} style={{marginTop: '20px'}}> 
             <input
                 type="text"
-                placeholder='Enter new task'
+                placeholder='Enter new Project'
                 value={newTaskName}
                 onChange={(e) => setNewTaskName(e.target.value)}
             />
-            <button>Save task</button>
+            <button>Add Project</button>
         </form>
     )
 }
